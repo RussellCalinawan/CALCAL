@@ -23,10 +23,10 @@ Partial Class browseForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
+        picboxBack = New PictureBox()
         DataGridView1 = New DataGridView()
         dataPANEL = New Panel()
         registrationPANEL = New Panel()
-        cancelButton = New RoundedButton()
         registerButton = New RoundedButton()
         Label4 = New Label()
         eventnameCMB = New ComboBox()
@@ -37,13 +37,12 @@ Partial Class browseForm
         Label2 = New Label()
         Label1 = New Label()
         eventsDGV = New DataGridView()
-        picboxBack = New PictureBox()
         Panel1.SuspendLayout()
+        CType(picboxBack, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         dataPANEL.SuspendLayout()
         registrationPANEL.SuspendLayout()
         CType(eventsDGV, ComponentModel.ISupportInitialize).BeginInit()
-        CType(picboxBack, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -55,6 +54,16 @@ Partial Class browseForm
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(828, 39)
         Panel1.TabIndex = 1
+        ' 
+        ' picboxBack
+        ' 
+        picboxBack.Image = My.Resources.Resources.backero__1__removebg_preview__2_
+        picboxBack.Location = New Point(3, 1)
+        picboxBack.Name = "picboxBack"
+        picboxBack.Size = New Size(56, 35)
+        picboxBack.SizeMode = PictureBoxSizeMode.StretchImage
+        picboxBack.TabIndex = 8
+        picboxBack.TabStop = False
         ' 
         ' DataGridView1
         ' 
@@ -77,7 +86,6 @@ Partial Class browseForm
         ' registrationPANEL
         ' 
         registrationPANEL.BackColor = SystemColors.ControlLightLight
-        registrationPANEL.Controls.Add(cancelButton)
         registrationPANEL.Controls.Add(registerButton)
         registrationPANEL.Controls.Add(Label4)
         registrationPANEL.Controls.Add(eventnameCMB)
@@ -92,24 +100,12 @@ Partial Class browseForm
         registrationPANEL.Size = New Size(409, 371)
         registrationPANEL.TabIndex = 1
         ' 
-        ' cancelButton
-        ' 
-        cancelButton.BackColor = SystemColors.ActiveCaptionText
-        cancelButton.CornerRadius = 11
-        cancelButton.ForeColor = SystemColors.ControlLightLight
-        cancelButton.Location = New Point(210, 291)
-        cancelButton.Name = "cancelButton"
-        cancelButton.Size = New Size(130, 29)
-        cancelButton.TabIndex = 9
-        cancelButton.Text = "CANCEL"
-        cancelButton.UseVisualStyleBackColor = False
-        ' 
         ' registerButton
         ' 
         registerButton.BackColor = SystemColors.ActiveCaptionText
         registerButton.CornerRadius = 11
         registerButton.ForeColor = SystemColors.ControlLightLight
-        registerButton.Location = New Point(60, 291)
+        registerButton.Location = New Point(134, 286)
         registerButton.Name = "registerButton"
         registerButton.Size = New Size(130, 29)
         registerButton.TabIndex = 8
@@ -200,16 +196,6 @@ Partial Class browseForm
         eventsDGV.Size = New Size(822, 450)
         eventsDGV.TabIndex = 0
         ' 
-        ' picboxBack
-        ' 
-        picboxBack.Image = My.Resources.Resources.backero__1__removebg_preview__2_
-        picboxBack.Location = New Point(3, 1)
-        picboxBack.Name = "picboxBack"
-        picboxBack.Size = New Size(56, 35)
-        picboxBack.SizeMode = PictureBoxSizeMode.StretchImage
-        picboxBack.TabIndex = 8
-        picboxBack.TabStop = False
-        ' 
         ' browseForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -222,12 +208,12 @@ Partial Class browseForm
         StartPosition = FormStartPosition.CenterScreen
         Text = "browseForm"
         Panel1.ResumeLayout(False)
+        CType(picboxBack, ComponentModel.ISupportInitialize).EndInit()
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         dataPANEL.ResumeLayout(False)
         registrationPANEL.ResumeLayout(False)
         registrationPANEL.PerformLayout()
         CType(eventsDGV, ComponentModel.ISupportInitialize).EndInit()
-        CType(picboxBack, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -242,7 +228,6 @@ Partial Class browseForm
     Friend WithEvents Label2 As Label
     Friend WithEvents contactTextBox As lineTextBox
     Friend WithEvents userEmailTextBox As lineTextBox
-    Friend WithEvents cancelButton As RoundedButton
     Friend WithEvents registerButton As RoundedButton
     Friend WithEvents Label4 As Label
     Friend WithEvents eventnameCMB As ComboBox

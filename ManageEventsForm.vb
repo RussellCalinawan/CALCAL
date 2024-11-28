@@ -83,4 +83,9 @@ Public Class ManageEventsForm
             End Try
         End If
     End Sub
+
+    Private Sub picboxBack_Click(sender As Object, e As EventArgs) Handles picboxBack.Click
+        Me.Hide()
+        AdminForm.Show()
+    End Sub
 End Class

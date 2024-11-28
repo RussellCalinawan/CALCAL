@@ -71,4 +71,9 @@ Public Class CreateEventForm
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub picboxBack_Click(sender As Object, e As EventArgs) Handles picboxBack.Click
+        Me.Hide()
+        AdminForm.Show()
+    End Sub
 End Class

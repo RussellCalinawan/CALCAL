@@ -33,6 +33,8 @@ Partial Class CreateEventForm
         textLoc = New TextBox()
         Label5 = New Label()
         textCapacity = New TextBox()
+        picboxBack = New PictureBox()
+        CType(picboxBack, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -142,12 +144,23 @@ Partial Class CreateEventForm
         textCapacity.Size = New Size(91, 23)
         textCapacity.TabIndex = 14
         ' 
+        ' picboxBack
+        ' 
+        picboxBack.Image = My.Resources.Resources.backero__1__removebg_preview__2_
+        picboxBack.Location = New Point(3, 2)
+        picboxBack.Name = "picboxBack"
+        picboxBack.Size = New Size(56, 35)
+        picboxBack.SizeMode = PictureBoxSizeMode.StretchImage
+        picboxBack.TabIndex = 15
+        picboxBack.TabStop = False
+        ' 
         ' CreateEventForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ControlText
+        BackColor = Color.FromArgb(CByte(20), CByte(20), CByte(20))
         ClientSize = New Size(601, 463)
+        Controls.Add(picboxBack)
         Controls.Add(textCapacity)
         Controls.Add(Label5)
         Controls.Add(textLoc)
@@ -163,6 +176,7 @@ Partial Class CreateEventForm
         Name = "CreateEventForm"
         ShowIcon = False
         StartPosition = FormStartPosition.CenterScreen
+        CType(picboxBack, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -178,4 +192,5 @@ Partial Class CreateEventForm
     Friend WithEvents textLoc As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents textCapacity As TextBox
+    Friend WithEvents picboxBack As PictureBox
 End Class

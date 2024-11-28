@@ -161,38 +161,40 @@ Partial Class loginform
         panelSign.Controls.Add(textboxCreate)
         panelSign.Controls.Add(textboxeehmail)
         panelSign.Controls.Add(textboxName)
-        panelSign.Location = New Point(0, 175)
+        panelSign.Location = New Point(0, 189)
         panelSign.Name = "panelSign"
-        panelSign.Size = New Size(825, 237)
+        panelSign.Size = New Size(825, 223)
         panelSign.TabIndex = 11
         ' 
         ' textboxConfirmeh
         ' 
         textboxConfirmeh.BackColor = Color.PaleGreen
         textboxConfirmeh.BorderStyle = BorderStyle.None
-        textboxConfirmeh.ForeColor = SystemColors.WindowFrame
+        textboxConfirmeh.ForeColor = SystemColors.MenuText
         textboxConfirmeh.Location = New Point(145, 190)
         textboxConfirmeh.Name = "textboxConfirmeh"
         textboxConfirmeh.PlaceholderText = "Confirm your password"
         textboxConfirmeh.Size = New Size(469, 16)
         textboxConfirmeh.TabIndex = 4
+        textboxConfirmeh.UseSystemPasswordChar = True
         ' 
         ' textboxCreate
         ' 
         textboxCreate.BackColor = Color.PaleGreen
         textboxCreate.BorderStyle = BorderStyle.None
-        textboxCreate.ForeColor = SystemColors.WindowFrame
+        textboxCreate.ForeColor = SystemColors.MenuText
         textboxCreate.Location = New Point(145, 132)
         textboxCreate.Name = "textboxCreate"
         textboxCreate.PlaceholderText = "Create a password"
         textboxCreate.Size = New Size(469, 16)
         textboxCreate.TabIndex = 3
+        textboxCreate.UseSystemPasswordChar = True
         ' 
         ' textboxeehmail
         ' 
         textboxeehmail.BackColor = Color.PaleGreen
         textboxeehmail.BorderStyle = BorderStyle.None
-        textboxeehmail.ForeColor = SystemColors.WindowFrame
+        textboxeehmail.ForeColor = SystemColors.InfoText
         textboxeehmail.Location = New Point(145, 77)
         textboxeehmail.Name = "textboxeehmail"
         textboxeehmail.PlaceholderText = "Enter your Email"
@@ -203,7 +205,7 @@ Partial Class loginform
         ' 
         textboxName.BackColor = Color.PaleGreen
         textboxName.BorderStyle = BorderStyle.None
-        textboxName.ForeColor = SystemColors.WindowFrame
+        textboxName.ForeColor = SystemColors.MenuText
         textboxName.Location = New Point(145, 20)
         textboxName.Name = "textboxName"
         textboxName.PlaceholderText = "Enter your name"

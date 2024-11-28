@@ -27,15 +27,18 @@ Partial Class ManageEventsForm
         datamanagePANEL = New Panel()
         btnDelete = New RoundedButton()
         managedataDGV = New DataGridView()
+        picboxBack = New PictureBox()
         Panel1.SuspendLayout()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         datamanagePANEL.SuspendLayout()
         CType(managedataDGV, ComponentModel.ISupportInitialize).BeginInit()
+        CType(picboxBack, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.PaleGreen
+        Panel1.Controls.Add(picboxBack)
         Panel1.Controls.Add(DataGridView1)
         Panel1.Location = New Point(-2, 1)
         Panel1.Name = "Panel1"
@@ -79,6 +82,16 @@ Partial Class ManageEventsForm
         managedataDGV.Size = New Size(611, 457)
         managedataDGV.TabIndex = 3
         ' 
+        ' picboxBack
+        ' 
+        picboxBack.Image = My.Resources.Resources.backero__1__removebg_preview__2_
+        picboxBack.Location = New Point(3, 1)
+        picboxBack.Name = "picboxBack"
+        picboxBack.Size = New Size(56, 35)
+        picboxBack.SizeMode = PictureBoxSizeMode.StretchImage
+        picboxBack.TabIndex = 9
+        picboxBack.TabStop = False
+        ' 
         ' ManageEventsForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -95,6 +108,7 @@ Partial Class ManageEventsForm
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         datamanagePANEL.ResumeLayout(False)
         CType(managedataDGV, ComponentModel.ISupportInitialize).EndInit()
+        CType(picboxBack, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -103,4 +117,5 @@ Partial Class ManageEventsForm
     Friend WithEvents datamanagePANEL As Panel
     Friend WithEvents managedataDGV As DataGridView
     Friend WithEvents btnDelete As RoundedButton
+    Friend WithEvents picboxBack As PictureBox
 End Class

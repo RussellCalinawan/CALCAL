@@ -65,4 +65,9 @@ Public Class AdminForm
         CreateEventForm.Show()
         Me.Hide()
     End Sub
+
+    Private Sub picboxBack_Click(sender As Object, e As EventArgs) Handles picboxBack.Click
+        Panel3.Hide()
+        participantsDGV.Hide()
+    End Sub
 End Class

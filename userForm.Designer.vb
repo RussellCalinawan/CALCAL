@@ -24,11 +24,14 @@ Partial Class userForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(userForm))
         Panel1 = New Panel()
+        picboxBack = New PictureBox()
         btnMyEvents = New RoundedButton()
         btnBrowse = New RoundedButton()
         PictureBox1 = New PictureBox()
         viewPANEL = New Panel()
         viewDGV = New DataGridView()
+        Panel1.SuspendLayout()
+        CType(picboxBack, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         viewPANEL.SuspendLayout()
         CType(viewDGV, ComponentModel.ISupportInitialize).BeginInit()
@@ -36,12 +39,24 @@ Partial Class userForm
         ' 
         ' Panel1
         ' 
-        Panel1.BackColor = SystemColors.ControlText
+        Panel1.BackColor = Color.LightGreen
+        Panel1.Controls.Add(picboxBack)
         Panel1.ForeColor = SystemColors.ActiveCaptionText
         Panel1.Location = New Point(0, -1)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(825, 39)
         Panel1.TabIndex = 0
+        ' 
+        ' picboxBack
+        ' 
+        picboxBack.BackColor = Color.Transparent
+        picboxBack.Image = My.Resources.Resources.backero__1__removebg_preview__2_
+        picboxBack.Location = New Point(3, 3)
+        picboxBack.Name = "picboxBack"
+        picboxBack.Size = New Size(39, 30)
+        picboxBack.SizeMode = PictureBoxSizeMode.StretchImage
+        picboxBack.TabIndex = 9
+        picboxBack.TabStop = False
         ' 
         ' btnMyEvents
         ' 
@@ -87,6 +102,7 @@ Partial Class userForm
         ' viewDGV
         ' 
         viewDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        viewDGV.EnableHeadersVisualStyles = False
         viewDGV.Location = New Point(-2, 0)
         viewDGV.Name = "viewDGV"
         viewDGV.Size = New Size(496, 463)
@@ -108,6 +124,8 @@ Partial Class userForm
         Name = "userForm"
         StartPosition = FormStartPosition.CenterScreen
         Text = "mainUserForm"
+        Panel1.ResumeLayout(False)
+        CType(picboxBack, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         viewPANEL.ResumeLayout(False)
         CType(viewDGV, ComponentModel.ISupportInitialize).EndInit()
@@ -120,4 +138,5 @@ Partial Class userForm
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents viewPANEL As Panel
     Friend WithEvents viewDGV As DataGridView
+    Friend WithEvents picboxBack As PictureBox
 End Class

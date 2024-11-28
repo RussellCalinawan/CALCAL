@@ -175,7 +175,7 @@ Public Class loginform
     Private Sub btnEnterer_Click(sender As Object, e As EventArgs) Handles btnEnterer.Click
         Dim enteredEmail As String = textboxEmail.Text
         Dim enteredPassword As String = textboxConfirm.Text
-
+        userForm.SetUserEmail(textboxEmail.Text)
         ' Query to retrieve the stored hashed password based on the entered email
         Dim query As String = "SELECT password FROM signup WHERE email = @email"
 
@@ -207,5 +207,9 @@ Public Class loginform
                 End Try
             End Using
         End Using
+    End Sub
+
+    Private Sub textboxeehmail_TextChanged(sender As Object, e As EventArgs) Handles textboxeehmail.TextChanged
+
     End Sub
 End Class

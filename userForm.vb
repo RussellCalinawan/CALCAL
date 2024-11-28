@@ -13,40 +13,55 @@ Public Class userForm
 
     ' Method to load the user's events
     Public Sub LoadUserEvents()
-        Dim query As String = "SELECT events.EventName, events.EventDate, events.EventTime, events.EventLocation 
-                               FROM events
-                               INNER JOIN registerevents ON events.EventName = registerevents.name
-                               WHERE registerevents.email"
+        ' Query to fetch events the user has registered for
+        Dim query As String = "SELECT idregisterevents, NAME, EVENTNAME, EMAIL, CONTACT 
+                           FROM registerevents
+                           WHERE EMAIL = @userEmail"
 
         Dim dt As New DataTable()
 
         Try
+            ' Initialize the connection using the connection string
             Using conn As New MySqlConnection(connString)
+                ' Create a command object with the query and connection
                 Using cmd As New MySqlCommand(query, conn)
-                    ' Add the stored email as a parameter to the query
+                    ' Add the user's email as a parameter to the query
                     cmd.Parameters.AddWithValue("@userEmail", loggedInUserEmail)
+
+                    ' Open the connection
                     conn.Open()
 
+                    ' Execute the query and load the result into the DataTable
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.HasRows Then
-                            dt.Load(reader)
+                            dt.Load(reader) ' Load data into DataTable if rows exist
                         Else
+                            ' Inform the user if no events are found
                             MessageBox.Show("No events found for this user.", "No Events", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         End If
                     End Using
                 End Using
             End Using
+        Catch ex As MySqlException
+            ' Handle MySQL-specific errors
+            MessageBox.Show("A database error occurred: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Catch ex As Exception
-            MessageBox.Show("An error occurred while loading events: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ' Handle general errors
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        ' Bind the DataTable to the DataGridView to display the user's events
+        ' Bind the DataTable to the DataGridView to display the user's registered events
         viewDGV.DataSource = dt
+        ' Optional: Adjust DataGridView columns for better readability
+        viewDGV.AutoResizeColumns()
     End Sub
+
 
     ' Event handler for the "My Events" button click
     Private Sub btnMyEvents_Click(sender As Object, e As EventArgs) Handles btnMyEvents.Click
-        ' Load the user's events using the stored email
+        viewDGV.Show()
+        viewPANEL.Show()
+        PictureBox1.Hide()
         LoadUserEvents()
     End Sub
 
@@ -59,5 +74,10 @@ Public Class userForm
     ' Browse button to open the browse form
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         browseForm.Show()
+    End Sub
+
+    Private Sub picboxBack_Click(sender As Object, e As EventArgs) Handles picboxBack.Click
+        Me.Hide()
+        loginform.Show()
     End Sub
 End Class

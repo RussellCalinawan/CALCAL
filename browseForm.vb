@@ -113,12 +113,16 @@ Public Class browseForm
         RegisterUserForEvent()  ' Call the method to register the user
     End Sub
 
-    Private Sub cancelButton_Click(sender As Object, e As EventArgs) Handles cancelButton.Click
+    Private Sub cancelButton_Click(sender As Object, e As EventArgs)
 
     End Sub
 
     Private Sub picboxBack_Click(sender As Object, e As EventArgs) Handles picboxBack.Click
         userForm.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub registrationPANEL_Paint(sender As Object, e As PaintEventArgs) Handles registrationPANEL.Paint
+
     End Sub
 End Class
