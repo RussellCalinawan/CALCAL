@@ -22,18 +22,17 @@ Partial Class CreateEventForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreateEventForm))
         Label1 = New Label()
         textTitle = New TextBox()
         Label2 = New Label()
         Label3 = New Label()
-        DateTimePicker1 = New DateTimePicker()
-        DateTimePicker2 = New DateTimePicker()
+        dateDTP = New DateTimePicker()
+        timeDTP = New DateTimePicker()
         btnAccept = New RoundedButton()
-        PictureBox1 = New PictureBox()
-        lblDesc = New Label()
-        richtextDesc = New RichTextBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        Label4 = New Label()
+        textLoc = New TextBox()
+        Label5 = New Label()
+        textCapacity = New TextBox()
         SuspendLayout()
         ' 
         ' Label1
@@ -41,7 +40,7 @@ Partial Class CreateEventForm
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.ControlLightLight
-        Label1.Location = New Point(54, 110)
+        Label1.Location = New Point(54, 63)
         Label1.Name = "Label1"
         Label1.Size = New Size(39, 17)
         Label1.TabIndex = 0
@@ -50,7 +49,7 @@ Partial Class CreateEventForm
         ' textTitle
         ' 
         textTitle.BackColor = SystemColors.ControlLightLight
-        textTitle.Location = New Point(99, 108)
+        textTitle.Location = New Point(99, 63)
         textTitle.Name = "textTitle"
         textTitle.Size = New Size(415, 23)
         textTitle.TabIndex = 1
@@ -60,7 +59,7 @@ Partial Class CreateEventForm
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = SystemColors.ControlLightLight
-        Label2.Location = New Point(54, 196)
+        Label2.Location = New Point(54, 147)
         Label2.Name = "Label2"
         Label2.Size = New Size(42, 17)
         Label2.TabIndex = 2
@@ -71,70 +70,77 @@ Partial Class CreateEventForm
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.ControlLightLight
-        Label3.Location = New Point(379, 196)
+        Label3.Location = New Point(373, 147)
         Label3.Name = "Label3"
         Label3.Size = New Size(43, 17)
         Label3.TabIndex = 3
         Label3.Text = "Time :"
         ' 
-        ' DateTimePicker1
+        ' dateDTP
         ' 
-        DateTimePicker1.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        DateTimePicker1.Location = New Point(54, 238)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(213, 21)
-        DateTimePicker1.TabIndex = 4
+        dateDTP.Font = New Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        dateDTP.Location = New Point(54, 168)
+        dateDTP.Name = "dateDTP"
+        dateDTP.Size = New Size(213, 21)
+        dateDTP.TabIndex = 4
         ' 
-        ' DateTimePicker2
+        ' timeDTP
         ' 
-        DateTimePicker2.Format = DateTimePickerFormat.Time
-        DateTimePicker2.Location = New Point(379, 236)
-        DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.ShowUpDown = True
-        DateTimePicker2.Size = New Size(91, 23)
-        DateTimePicker2.TabIndex = 5
+        timeDTP.Format = DateTimePickerFormat.Time
+        timeDTP.Location = New Point(373, 166)
+        timeDTP.Name = "timeDTP"
+        timeDTP.ShowUpDown = True
+        timeDTP.Size = New Size(91, 23)
+        timeDTP.TabIndex = 5
         ' 
         ' btnAccept
         ' 
         btnAccept.BackColor = Color.PaleGreen
         btnAccept.CornerRadius = 11
-        btnAccept.Location = New Point(186, 375)
+        btnAccept.Location = New Point(170, 361)
         btnAccept.Name = "btnAccept"
-        btnAccept.Size = New Size(206, 33)
+        btnAccept.Size = New Size(234, 31)
         btnAccept.TabIndex = 6
         btnAccept.Text = "CREATE"
         btnAccept.UseVisualStyleBackColor = False
         ' 
-        ' PictureBox1
+        ' Label4
         ' 
-        PictureBox1.BackColor = SystemColors.ControlLightLight
-        PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(386, 110)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(23, 18)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 7
-        PictureBox1.TabStop = False
+        Label4.AutoSize = True
+        Label4.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.ForeColor = SystemColors.ControlLightLight
+        Label4.Location = New Point(55, 206)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(64, 17)
+        Label4.TabIndex = 11
+        Label4.Text = "Location :"
         ' 
-        ' lblDesc
+        ' textLoc
         ' 
-        lblDesc.AutoSize = True
-        lblDesc.BackColor = SystemColors.ControlLightLight
-        lblDesc.Font = New Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblDesc.ForeColor = SystemColors.ControlText
-        lblDesc.Location = New Point(413, 112)
-        lblDesc.Name = "lblDesc"
-        lblDesc.Size = New Size(98, 13)
-        lblDesc.TabIndex = 8
-        lblDesc.Text = "Add a description"
+        textLoc.BackColor = SystemColors.ControlLightLight
+        textLoc.Location = New Point(55, 226)
+        textLoc.Name = "textLoc"
+        textLoc.Size = New Size(212, 23)
+        textLoc.TabIndex = 12
         ' 
-        ' richtextDesc
+        ' Label5
         ' 
-        richtextDesc.Location = New Point(272, 130)
-        richtextDesc.Name = "richtextDesc"
-        richtextDesc.Size = New Size(241, 202)
-        richtextDesc.TabIndex = 10
-        richtextDesc.Text = ""
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label5.ForeColor = SystemColors.ControlLightLight
+        Label5.Location = New Point(373, 206)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(93, 17)
+        Label5.TabIndex = 13
+        Label5.Text = "Max Capacity :"
+        ' 
+        ' textCapacity
+        ' 
+        textCapacity.BackColor = SystemColors.ControlLightLight
+        textCapacity.Location = New Point(373, 226)
+        textCapacity.Name = "textCapacity"
+        textCapacity.Size = New Size(91, 23)
+        textCapacity.TabIndex = 14
         ' 
         ' CreateEventForm
         ' 
@@ -142,12 +148,13 @@ Partial Class CreateEventForm
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ControlText
         ClientSize = New Size(601, 463)
-        Controls.Add(richtextDesc)
-        Controls.Add(lblDesc)
-        Controls.Add(PictureBox1)
+        Controls.Add(textCapacity)
+        Controls.Add(Label5)
+        Controls.Add(textLoc)
+        Controls.Add(Label4)
         Controls.Add(btnAccept)
-        Controls.Add(DateTimePicker2)
-        Controls.Add(DateTimePicker1)
+        Controls.Add(timeDTP)
+        Controls.Add(dateDTP)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(textTitle)
@@ -156,7 +163,6 @@ Partial Class CreateEventForm
         Name = "CreateEventForm"
         ShowIcon = False
         StartPosition = FormStartPosition.CenterScreen
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -165,10 +171,11 @@ Partial Class CreateEventForm
     Friend WithEvents textTitle As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents dateDTP As DateTimePicker
+    Friend WithEvents timeDTP As DateTimePicker
     Friend WithEvents btnAccept As RoundedButton
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents lblDesc As Label
-    Friend WithEvents richtextDesc As RichTextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents textLoc As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents textCapacity As TextBox
 End Class

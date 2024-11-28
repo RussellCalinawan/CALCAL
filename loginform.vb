@@ -1,4 +1,7 @@
-﻿Public Class loginform
+﻿Imports MySql.Data.MySqlClient
+Imports BCrypt.Net
+
+Public Class loginform
     Dim activeColor As Color = Color.Black
     Dim inactiveColor As Color = Color.PaleGreen
     Dim hoverColor As Color = Color.FromArgb(105, 216, 79)
@@ -7,13 +10,10 @@
     Dim animationStep As Integer = 5
     Dim isLoginActive As Boolean = True
     Dim isPasswordShown As Boolean = False
-    Dim placeholderName As String = "Enter your name"
-    Dim placeholderEmail As String = "Enter your email"
-    Dim placeholderCreate As String = "Create a password"
-    Dim placeholderConfirm As String = "Confirm your password"
+
+    Dim connString As String = "Server=localhost;Database=event;Uid=root;Pwd=Calinawan27;"
 
     Private Sub useForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         panelSign.Visible = False
         btnSigner.Visible = False
         piceyeClosed.Visible = True
@@ -21,7 +21,7 @@
         piceyeClosed.Cursor = Cursors.Hand
         piceyeOpen.Cursor = Cursors.Hand
 
-        textPass.PasswordChar = "*"
+        textboxConfirm.PasswordChar = "*"
 
         StyleButton(btnLogin1)
         StyleButton(btnSign1)
@@ -36,14 +36,11 @@
     Public Sub New()
         InitializeComponent()
 
-
         timerExpand = New Timer()
         timerShrink = New Timer()
 
-
         timerExpand.Interval = 10
         timerShrink.Interval = 10
-
 
         AddHandler timerExpand.Tick, AddressOf timerExpand1_Tick
         AddHandler timerShrink.Tick, AddressOf timerShrink1_Tick
@@ -100,7 +97,6 @@
         SetActiveButton(btnSign1, False)
         panelSign.Visible = False
         btnSigner.Visible = False
-
     End Sub
 
     Private Sub btnSign1_Click(sender As Object, e As EventArgs) Handles btnSign1.Click
@@ -128,73 +124,88 @@
     End Sub
 
     Private Sub piceyeOpen_Click(sender As Object, e As EventArgs) Handles piceyeOpen.Click
-        textPass.PasswordChar = "*"
+        textboxConfirm.PasswordChar = "*"
         piceyeClosed.Visible = True
         piceyeOpen.Visible = False
         isPasswordShown = False
     End Sub
-    Private Sub piceyeClosed_Click(sender As Object, e As EventArgs) Handles piceyeClosed.Click
 
-        textPass.PasswordChar = ""
+    Private Sub piceyeClosed_Click(sender As Object, e As EventArgs) Handles piceyeClosed.Click
+        textboxConfirm.PasswordChar = ""
         piceyeClosed.Visible = False
         piceyeOpen.Visible = True
         isPasswordShown = True
     End Sub
 
-    Private Sub SetPlaceholderColor(textBox As TextBox)
-        textBox.ForeColor = Color.Gray
-    End Sub
-
-    Private Sub ClearPlaceholderText(textBox As TextBox, placeholder As String)
-        If textBox.Text = placeholder Then
-            textBox.Text = ""
-            textBox.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub RestorePlaceholderText(textBox As TextBox, placeholder As String)
-        If String.IsNullOrEmpty(textBox.Text) Then
-            textBox.Text = placeholder
-            SetPlaceholderColor(textBox)
-        End If
-    End Sub
-    Private Sub textboxName_Enter(sender As Object, e As EventArgs) Handles textboxName.Enter
-        ClearPlaceholderText(textboxName, placeholderName)
-    End Sub
-
-    Private Sub textboxEmail_Enter(sender As Object, e As EventArgs) Handles textboxEmail.Enter
-        ClearPlaceholderText(textboxEmail, placeholderEmail)
-    End Sub
-
-    Private Sub textboxCreate_Enter(sender As Object, e As EventArgs) Handles textboxCreate.Enter
-        ClearPlaceholderText(textboxCreate, placeholderCreate)
-    End Sub
-
-    Private Sub textboxConfirm_Enter(sender As Object, e As EventArgs) Handles textboxConfirm.Enter
-        ClearPlaceholderText(textboxConfirm, placeholderConfirm)
-    End Sub
-
-    Private Sub textboxName_Leave(sender As Object, e As EventArgs) Handles textboxName.Leave
-        RestorePlaceholderText(textboxName, placeholderName)
-    End Sub
-
-    Private Sub textboxEmail_Leave(sender As Object, e As EventArgs) Handles textboxEmail.Leave
-        RestorePlaceholderText(textboxEmail, placeholderEmail)
-    End Sub
-
-    Private Sub textboxCreate_Leave(sender As Object, e As EventArgs) Handles textboxCreate.Leave
-        RestorePlaceholderText(textboxCreate, placeholderCreate)
-    End Sub
-
-    Private Sub textboxConfirm_Leave(sender As Object, e As EventArgs) Handles textboxConfirm.Leave
-        RestorePlaceholderText(textboxConfirm, placeholderConfirm)
-    End Sub
     Private Sub btnSigner_Click(sender As Object, e As EventArgs) Handles btnSigner.Click
-        Me.Hide()
-        userForm.Show()
+        ' Validate the password match
+        If textboxCreate.Text <> textboxConfirmeh.Text Then
+            MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Dim plainPassword As String = textboxCreate.Text ' Store the plain password
+
+        ' Hash the password using bcrypt
+        Dim hashedPassword As String = BCrypt.Net.BCrypt.HashPassword(plainPassword)
+
+        Dim query As String = "INSERT INTO signup (name, email, password) VALUES (@name, @userEmail, @password)"
+
+        ' Execute the SQL query to insert the user into the database
+        Try
+            Using conn As New MySqlConnection(connString)
+                Using cmd As New MySqlCommand(query, conn)
+                    ' Add parameters to avoid SQL injection
+                    cmd.Parameters.AddWithValue("@name", textboxName.Text)
+                    cmd.Parameters.AddWithValue("@userEmail", textboxeehmail.Text)
+                    cmd.Parameters.AddWithValue("@password", hashedPassword)
+
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+
+                    MessageBox.Show("Signup successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Show()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
     Private Sub btnEnterer_Click(sender As Object, e As EventArgs) Handles btnEnterer.Click
-        userForm.Show()
-        Me.Hide()
+        Dim enteredEmail As String = textboxEmail.Text
+        Dim enteredPassword As String = textboxConfirm.Text
+
+        ' Query to retrieve the stored hashed password based on the entered email
+        Dim query As String = "SELECT password FROM signup WHERE email = @email"
+
+        Using conn As New MySqlConnection(connString)
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@email", enteredEmail)
+
+                Try
+                    conn.Open()
+
+                    ' Retrieve the stored hashed password from the database
+                    Dim storedHashedPassword As Object = cmd.ExecuteScalar()
+
+                    ' Check if the email exists in the database
+                    If storedHashedPassword Is Nothing OrElse String.IsNullOrEmpty(storedHashedPassword.ToString()) Then
+                        MessageBox.Show("Email not found.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Else
+                        ' Verify the entered password against the stored hashed password using bcrypt
+                        If BCrypt.Net.BCrypt.Verify(enteredPassword, storedHashedPassword.ToString()) Then
+                            ' Password is correct, proceed with login
+                            userForm.Show()
+                            Me.Hide()
+                        Else
+                            MessageBox.Show("Incorrect password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End Using
+        End Using
     End Sub
 End Class

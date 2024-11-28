@@ -26,9 +26,12 @@ Partial Class userForm
         Panel1 = New Panel()
         btnMyEvents = New RoundedButton()
         btnBrowse = New RoundedButton()
-        btnRegister = New RoundedButton()
         PictureBox1 = New PictureBox()
+        viewPANEL = New Panel()
+        viewDGV = New DataGridView()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        viewPANEL.SuspendLayout()
+        CType(viewDGV, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
@@ -44,7 +47,7 @@ Partial Class userForm
         ' 
         btnMyEvents.CornerRadius = 11
         btnMyEvents.Font = New Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnMyEvents.Location = New Point(533, 162)
+        btnMyEvents.Location = New Point(533, 193)
         btnMyEvents.Name = "btnMyEvents"
         btnMyEvents.Size = New Size(250, 43)
         btnMyEvents.TabIndex = 1
@@ -55,23 +58,12 @@ Partial Class userForm
         ' 
         btnBrowse.CornerRadius = 11
         btnBrowse.Font = New Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnBrowse.Location = New Point(533, 250)
+        btnBrowse.Location = New Point(533, 304)
         btnBrowse.Name = "btnBrowse"
         btnBrowse.Size = New Size(250, 43)
         btnBrowse.TabIndex = 3
         btnBrowse.Text = "BROWSE EVENTS"
         btnBrowse.UseVisualStyleBackColor = True
-        ' 
-        ' btnRegister
-        ' 
-        btnRegister.CornerRadius = 11
-        btnRegister.Font = New Font("Arial Narrow", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnRegister.Location = New Point(533, 339)
-        btnRegister.Name = "btnRegister"
-        btnRegister.Size = New Size(250, 43)
-        btnRegister.TabIndex = 4
-        btnRegister.Text = "REGISTER FOR EVENTS"
-        btnRegister.UseVisualStyleBackColor = True
         ' 
         ' PictureBox1
         ' 
@@ -84,14 +76,30 @@ Partial Class userForm
         PictureBox1.TabIndex = 5
         PictureBox1.TabStop = False
         ' 
+        ' viewPANEL
+        ' 
+        viewPANEL.Controls.Add(viewDGV)
+        viewPANEL.Location = New Point(2, 38)
+        viewPANEL.Name = "viewPANEL"
+        viewPANEL.Size = New Size(494, 463)
+        viewPANEL.TabIndex = 6
+        ' 
+        ' viewDGV
+        ' 
+        viewDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        viewDGV.Location = New Point(-2, 0)
+        viewDGV.Name = "viewDGV"
+        viewDGV.Size = New Size(496, 463)
+        viewDGV.TabIndex = 0
+        ' 
         ' userForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.PaleGreen
         ClientSize = New Size(825, 500)
+        Controls.Add(viewPANEL)
         Controls.Add(PictureBox1)
-        Controls.Add(btnRegister)
         Controls.Add(btnBrowse)
         Controls.Add(btnMyEvents)
         Controls.Add(Panel1)
@@ -101,12 +109,15 @@ Partial Class userForm
         StartPosition = FormStartPosition.CenterScreen
         Text = "mainUserForm"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        viewPANEL.ResumeLayout(False)
+        CType(viewDGV, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnMyEvents As RoundedButton
     Friend WithEvents btnBrowse As RoundedButton
-    Friend WithEvents btnRegister As RoundedButton
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents viewPANEL As Panel
+    Friend WithEvents viewDGV As DataGridView
 End Class

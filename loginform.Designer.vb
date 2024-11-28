@@ -27,17 +27,17 @@ Partial Class loginform
         btnSign1 = New Button()
         Line1 = New line()
         btnLogin1 = New Button()
-        LineTextBox1 = New lineTextBox()
+        textboxEmail = New lineTextBox()
         lblUsername = New Label()
         Label1 = New Label()
-        textPass = New lineTextBox()
+        textboxConfirm = New lineTextBox()
         btnEnterer = New RoundedButton()
         piceyeClosed = New PictureBox()
         piceyeOpen = New PictureBox()
         panelSign = New Panel()
-        textboxConfirm = New lineTextBox()
+        textboxConfirmeh = New lineTextBox()
         textboxCreate = New lineTextBox()
-        textboxEmail = New lineTextBox()
+        textboxeehmail = New lineTextBox()
         textboxName = New lineTextBox()
         btnSigner = New RoundedButton()
         CType(piceyeClosed, ComponentModel.ISupportInitialize).BeginInit()
@@ -84,14 +84,14 @@ Partial Class loginform
         btnLogin1.Text = "LOG IN "
         btnLogin1.UseVisualStyleBackColor = False
         ' 
-        ' LineTextBox1
+        ' textboxEmail
         ' 
-        LineTextBox1.BackColor = Color.PaleGreen
-        LineTextBox1.BorderStyle = BorderStyle.None
-        LineTextBox1.Location = New Point(224, 231)
-        LineTextBox1.Name = "LineTextBox1"
-        LineTextBox1.Size = New Size(413, 16)
-        LineTextBox1.TabIndex = 4
+        textboxEmail.BackColor = Color.PaleGreen
+        textboxEmail.BorderStyle = BorderStyle.None
+        textboxEmail.Location = New Point(224, 231)
+        textboxEmail.Name = "textboxEmail"
+        textboxEmail.Size = New Size(413, 16)
+        textboxEmail.TabIndex = 4
         ' 
         ' lblUsername
         ' 
@@ -113,21 +113,22 @@ Partial Class loginform
         Label1.TabIndex = 6
         Label1.Text = "PASSWORD :"
         ' 
-        ' textPass
+        ' textboxConfirm
         ' 
-        textPass.BackColor = Color.PaleGreen
-        textPass.BorderStyle = BorderStyle.None
-        textPass.Location = New Point(224, 301)
-        textPass.Name = "textPass"
-        textPass.Size = New Size(413, 16)
-        textPass.TabIndex = 7
+        textboxConfirm.BackColor = Color.PaleGreen
+        textboxConfirm.BorderStyle = BorderStyle.None
+        textboxConfirm.Location = New Point(224, 301)
+        textboxConfirm.Name = "textboxConfirm"
+        textboxConfirm.Size = New Size(413, 16)
+        textboxConfirm.TabIndex = 7
         ' 
         ' btnEnterer
         ' 
         btnEnterer.BackColor = Color.Black
         btnEnterer.CornerRadius = 11
+        btnEnterer.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnEnterer.ForeColor = SystemColors.ButtonHighlight
-        btnEnterer.Location = New Point(308, 438)
+        btnEnterer.Location = New Point(299, 438)
         btnEnterer.Name = "btnEnterer"
         btnEnterer.Size = New Size(198, 38)
         btnEnterer.TabIndex = 8
@@ -156,25 +157,25 @@ Partial Class loginform
         ' 
         ' panelSign
         ' 
-        panelSign.Controls.Add(textboxConfirm)
+        panelSign.Controls.Add(textboxConfirmeh)
         panelSign.Controls.Add(textboxCreate)
-        panelSign.Controls.Add(textboxEmail)
+        panelSign.Controls.Add(textboxeehmail)
         panelSign.Controls.Add(textboxName)
         panelSign.Location = New Point(0, 175)
         panelSign.Name = "panelSign"
         panelSign.Size = New Size(825, 237)
         panelSign.TabIndex = 11
         ' 
-        ' textboxConfirm
+        ' textboxConfirmeh
         ' 
-        textboxConfirm.BackColor = Color.PaleGreen
-        textboxConfirm.BorderStyle = BorderStyle.None
-        textboxConfirm.ForeColor = SystemColors.WindowFrame
-        textboxConfirm.Location = New Point(145, 190)
-        textboxConfirm.Name = "textboxConfirm"
-        textboxConfirm.Size = New Size(469, 16)
-        textboxConfirm.TabIndex = 4
-        textboxConfirm.Text = "Confirm your password"
+        textboxConfirmeh.BackColor = Color.PaleGreen
+        textboxConfirmeh.BorderStyle = BorderStyle.None
+        textboxConfirmeh.ForeColor = SystemColors.WindowFrame
+        textboxConfirmeh.Location = New Point(145, 190)
+        textboxConfirmeh.Name = "textboxConfirmeh"
+        textboxConfirmeh.PlaceholderText = "Confirm your password"
+        textboxConfirmeh.Size = New Size(469, 16)
+        textboxConfirmeh.TabIndex = 4
         ' 
         ' textboxCreate
         ' 
@@ -183,20 +184,20 @@ Partial Class loginform
         textboxCreate.ForeColor = SystemColors.WindowFrame
         textboxCreate.Location = New Point(145, 132)
         textboxCreate.Name = "textboxCreate"
+        textboxCreate.PlaceholderText = "Create a password"
         textboxCreate.Size = New Size(469, 16)
         textboxCreate.TabIndex = 3
-        textboxCreate.Text = "Create a password"
         ' 
-        ' textboxEmail
+        ' textboxeehmail
         ' 
-        textboxEmail.BackColor = Color.PaleGreen
-        textboxEmail.BorderStyle = BorderStyle.None
-        textboxEmail.ForeColor = SystemColors.WindowFrame
-        textboxEmail.Location = New Point(145, 77)
-        textboxEmail.Name = "textboxEmail"
-        textboxEmail.Size = New Size(469, 16)
-        textboxEmail.TabIndex = 2
-        textboxEmail.Text = "Enter your email "
+        textboxeehmail.BackColor = Color.PaleGreen
+        textboxeehmail.BorderStyle = BorderStyle.None
+        textboxeehmail.ForeColor = SystemColors.WindowFrame
+        textboxeehmail.Location = New Point(145, 77)
+        textboxeehmail.Name = "textboxeehmail"
+        textboxeehmail.PlaceholderText = "Enter your Email"
+        textboxeehmail.Size = New Size(469, 16)
+        textboxeehmail.TabIndex = 2
         ' 
         ' textboxName
         ' 
@@ -205,23 +206,24 @@ Partial Class loginform
         textboxName.ForeColor = SystemColors.WindowFrame
         textboxName.Location = New Point(145, 20)
         textboxName.Name = "textboxName"
+        textboxName.PlaceholderText = "Enter your name"
         textboxName.Size = New Size(469, 16)
         textboxName.TabIndex = 0
-        textboxName.Text = "Enter your name"
         ' 
         ' btnSigner
         ' 
         btnSigner.BackColor = Color.Black
         btnSigner.CornerRadius = 11
+        btnSigner.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnSigner.ForeColor = SystemColors.ButtonHighlight
-        btnSigner.Location = New Point(308, 438)
+        btnSigner.Location = New Point(299, 438)
         btnSigner.Name = "btnSigner"
         btnSigner.Size = New Size(198, 38)
         btnSigner.TabIndex = 12
         btnSigner.Text = "SIGN UP"
         btnSigner.UseVisualStyleBackColor = False
         ' 
-        ' useForm
+        ' loginform
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -230,10 +232,10 @@ Partial Class loginform
         Controls.Add(panelSign)
         Controls.Add(piceyeOpen)
         Controls.Add(piceyeClosed)
-        Controls.Add(textPass)
+        Controls.Add(textboxConfirm)
         Controls.Add(Label1)
         Controls.Add(lblUsername)
-        Controls.Add(LineTextBox1)
+        Controls.Add(textboxEmail)
         Controls.Add(btnLogin1)
         Controls.Add(Line1)
         Controls.Add(btnSign1)
@@ -242,7 +244,7 @@ Partial Class loginform
         Controls.Add(btnEnterer)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
-        Name = "useForm"
+        Name = "loginform"
         ShowIcon = False
         StartPosition = FormStartPosition.CenterScreen
         CType(piceyeClosed, ComponentModel.ISupportInitialize).EndInit()
@@ -257,17 +259,17 @@ Partial Class loginform
     Friend WithEvents btnSign1 As Button
     Friend WithEvents Line1 As line
     Friend WithEvents btnLogin1 As Button
-    Friend WithEvents LineTextBox1 As lineTextBox
+    Friend WithEvents textboxEmail As lineTextBox
     Friend WithEvents lblUsername As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents textPass As lineTextBox
+    Friend WithEvents textboxConfirm As lineTextBox
     Friend WithEvents btnEnterer As RoundedButton
     Friend WithEvents piceyeClosed As PictureBox
     Friend WithEvents piceyeOpen As PictureBox
     Friend WithEvents panelSign As Panel
-    Friend WithEvents textboxConfirm As lineTextBox
+    Friend WithEvents textboxConfirmeh As lineTextBox
     Friend WithEvents textboxCreate As lineTextBox
-    Friend WithEvents textboxEmail As lineTextBox
+    Friend WithEvents textboxeehmail As lineTextBox
     Friend WithEvents textboxName As lineTextBox
     Friend WithEvents btnSigner As RoundedButton
 End Class
